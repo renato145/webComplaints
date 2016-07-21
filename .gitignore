@@ -1,0 +1,2 @@
+# Exclude node module files
+node_modules
