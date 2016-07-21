@@ -99,7 +99,7 @@ app.use(flash());
 
 
 //routes
-var index             = require('./routes/index')(obj);
+var index = require('./routes/index')(obj);
 
 app.use('/', index);
 

@@ -1,11 +1,11 @@
-var express     = require('express');
-var language    = require('../language/ES');
-var F           = require('../controllers/Functions');
-var multipart         = require('connect-multiparty');
+var express             = require('express');
+var language            = require('../language/ES');
+var F                   = require('../controllers/Functions');
+var multipart           = require('connect-multiparty');
 var multipartMiddleware = multipart();
-var Complaint    = require('../controllers/ComplaintsController');
-var router      = express.Router();
-var TPL         = "index";
+var Complaint           = require('../controllers/ComplaintsController');
+var router              = express.Router();
+var TPL                 = "index";
 
 module.exports = function(obj, passport){
 
