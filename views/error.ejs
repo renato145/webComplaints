@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+  <title> 404 </title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=0" />
+  <link rel="shortcut icon" href="/images/favicon.ico">
+  <link type="text/css" rel="stylesheet" href="/stylesheets/normalize.min.css"  media="screen"/>
+  <style>
+  .error-wrapper {
+      height: 990px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+  }
+  .error-wrapper .fondo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+  }
+  .error-wrapper .fondo .cielo {
+      height: 40%;
+      width: 100%;
+      background: #cdeaf7;
+  }
+  .error-wrapper .fondo .agua {
+      height: 15%;
+      width: 100%;
+      background: #bbdece;
+  }
+  .error-wrapper .fondo .arena {
+      width: 100%;
+      height: 45%;
+      background: #fff7bf;
+  }
+  .error-wrapper .fondo .sol {
+      position: absolute;
+      z-index: 10;
+      top: 10%;
+      right: 10%;
+      border-radius: 10000px;
+      height: 150px;
+      width: 150px;
+      background-color: #fff8b5;
+  }
+  .error-wrapper .olas {
+      position: absolute;
+      top: 55%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 500;
+  }
+  .error-wrapper .olas * {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-position: center top;
+  }
+  .error-wrapper .olas .o-agua {
+      top: -4%;
+      background-image: url(/images/olafondo.png);
+      z-index: 10;
+  }
+  .error-wrapper .olas .o-espuma {
+      top: 0;
+      background-image: url(/images/espuma.png);
+      z-index: 9;
+  }
+  .error-wrapper .olas .o-arena {
+      top: 0%;
+      background-image: url(/images/arenamojada.png);
+      z-index: 8;
+  }
+  .error-wrapper .detalle {
+      height: 600px;
+      position: absolute;
+      bottom: 15%;
+      right: 15%;
+      z-index: 1000;
+  }
+  .error-wrapper .detalle img {
+      height: 100%;
+      width: auto;
+      bottom: 0;
+      right: 0;
+  }
+  .error-wrapper .texto {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      max-width: 1200px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      z-index: 2000;
+  }
+  .error-wrapper .texto .titulo {
+      position: absolute;
+      bottom: 60%;
+      left: 0;
+      margin: 0 20px;
+      font-size: 40px;
+      line-height: 1em;
+      color: #333;
+      text-transform: uppercase;
+      font-family: "museo100", sans-serif;
+  }
+  .error-wrapper .texto .titulo span.numero {
+      font-size: 200px;
+      line-height: 1em;
+      color: white;
+  }
+  .error-wrapper .texto .subtitulo {
+      position: absolute;
+      top: 42%;
+      left: 0;
+      font-family: "Open Sans", "source-sans-serif", sans-serif;
+      font-size: 20px;
+      line-height: 1em;
+      margin: 0 20px;
+      color: black;
+  }
+  .error-wrapper .texto .subtitulo a {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-left: 10px;
+      text-transform: uppercase;
+  }
+  a {
+      color: #d6a427;
+      text-decoration: none;
+  }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="main">
+    <div class="content" role="main">
+      <div class="clearfix">
+        <div class="error-wrapper">
+          <div class="fondo">
+            <div class="cielo"></div>
+            <div class="agua"></div>
+            <div class="arena"></div>
+            <div class="sol"></div>
+          </div>
+          <div class="olas">
+            <div class="o-agua"></div>
+            <div class="o-espuma"></div>
+            <div class="o-arena"></div>
+          </div>
+          <div class="detalle">
+            <img src="/images/surf.png">
+          </div>
+          <div class="texto">
+            <div class="titulo">
+              <span class="numero">404</span>
+              <span class="titular">Parece que aqui no hay olas</span>
+            </div>
+            <div class="subtitulo">
+              <span>Permiteme que te acompañe a la </span> <a href="/" class="">página principal</a>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/javascripts/jquery-2.1.1.min.js"></script>
+<script>
+(function ($) {
+
+    function arenaFade() {
+        $('.olas .o-arena').fadeOut(3000).fadeIn(0);
+    }
+    
+    function aguaMove() {
+        $('.olas .o-agua').animate({top:"-8%"},2200, function () {
+            $('.olas .o-agua').animate({top:"-4%"},800, function () {
+                aguaMove();
+            });
+        });
+    }
+    
+    function espumaMove() {
+        arenaFade();
+    
+        $('.olas .o-espuma').animate({top:"-4%"},2200, function () {
+            $('.olas .o-espuma').animate({top:"0%"},800, function () {
+                espumaMove();
+            });
+        });
+    }
+
+    //Error animation
+    aguaMove();
+
+    $(this).delay(300).queue(function(n) {
+        espumaMove();
+    });
+
+})(jQuery);
+</script>
+</body>
+</html>
